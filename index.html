@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Portfolio Fais</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+/* ================= GLOBAL ================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(270deg, #2980b9, #6dd5fa, #1abc9c);
+  background-size: 600% 600%;
+  animation: bgMove 10s ease infinite;
+  color: #333;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  color: #2980b9;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #1abc9c;
+}
+
+.navbar.scrolled {
+  background: #2980b9;
+}
+
+.navbar.scrolled a {
+  color: white;
+}
+
+/* ================= HERO ================= */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.hero-text {
+  max-width: 500px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero h2 {
+  color: #555;
+  height: 30px;
+}
+
+.foto-profil {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ================= SECTION ================= */
+section {
+  background: white;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #2980b9;
+}
+
+/* ================= PROJECT ================= */
+.project-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  width: 40%;
+  transition: 0.3s;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card:hover img {
+  transform: translateY(-10px);
+}
+
+/* ================= SKILL ================= */
+.skill-box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.skill-box p {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.bar {
+  width: 100%;
+  height: 12px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.fill.html {
+  width: 90%;
+  background: linear-gradient(90deg, #ff7b00, #ff3c00);
+}
+
+.fill.css {
+  width: 80%;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+}
+
+.fill.js {
+  width: 60%;
+  background: linear-gradient(90deg, #f7df1e, #f0b90b);
+}
+
+/* ================= BUTTON ================= */
+.btn {
+  display: inline-block;
+  background: #2980b9;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1abc9c;
+}
+
+/* ================= ANIMATION ================= */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= DARK MODE ================= */
+.dark {
+  background: #121212;
+  color: white;
+}
+
+.dark section {
+  background: #1e1e1e;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero img {
+    margin-top: 20px;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+/* ================= KEYFRAMES ================= */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+.wa-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  font-size: 25px;
+  padding: 15px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.wa-float:hover {
+  transform: scale(1.1);
+}
+
+/* ================= JASA ================= */
+.jasa-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.jasa-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.jasa-card:hover {
+  transform: translateY(-10px);
+}
+
+.harga {
+  font-size: 22px;
+  color: #2980b9;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* ================= FORM ================= */
+.order-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.order-box input,
+.order-box textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.order-box textarea {
+  height: 100px;
+}
+
+/* ================= KONTAK ================= */
+.contact-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.contact-box .card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  background: #1e1e2f;
+  padding: 15px;
+  border-radius: 15px;
+  color: white;
+  transition: 0.3s;
+}
+
+.contact-box .card span {
+  font-size: 30px;
+}
+
+.contact-box .card h3 {
+  margin: 0;
+}
+
+.contact-box .card p {
+  margin: 0;
+  opacity: 0.7;
+}
+
+.contact-box .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* WARNA */
+.wa { border-left: 5px solid #25D366; }
+.email { border-left: 5px solid #EA4335; }
+.ig { border-left: 5px solid #E1306C; }
+
+/* ================= DARK MODE FIX TOTAL ================= */
+
+/* Section umum */
+.dark section {
+  background: #1e1e1e;
+  color: white;
+}
+
+/* Project */
+.dark .card {
+  background: #2a2a2a;
+  color: white;
+}
+
+/* Card project container (kalau ada) */
+.dark .project {
+  background: #2a2a2a;
+  color: white;
+}
+
+/* Jasa */
+.dark .jasa-card {
+  background: #2a2a2a;
+  color: white;
+}
+
+/* Skill */
+.dark .skill-box {
+  background: #2a2a2a;
+}
+
+/* Navbar */
+.dark .navbar {
+  background: #1e1e1e;
+}
+
+/* Kontak */
+.dark .contact-box .card {
+  background: #2a2a2a;
+}
+
+/* Text biar jelas */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark p {
+  color: white;
+}
+
+/* FORM DARK MODE FIX */
+.dark .order-box input,
+.dark .order-box textarea {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+}
+
+/* Placeholder biar keliatan */
+.dark .order-box input::placeholder,
+.dark .order-box textarea::placeholder {
+  color: #aaa;
+}
+
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#project">Project</a>
+<a href="#skill">Skill</a>
+<a href="#kontak">Kontak</a>
+</div>
+
+<!-- HERO -->
+
+<div class="hero" id="home">
+
+<div class="hero-text">
+
+<h1>Halo, Saya Fais 👋</h1>
+
+<h2><span id="typing"></span></h2>
+
+<p>
+Saya adalah seorang Frontend Developer pemula yang fokus pada pembuatan website modern,
+interaktif, dan responsive. Saat ini saya terus belajar JavaScript dan pengembangan web.
+</p>
+
+<button onclick="darkMode()" class="btn">Dark Mode 🌙</button>
+
+<br><br>
+
+<a href="cv-fais.pdf" class="btn" download>Download CV 📄</a>
+
+</div>
+
+<img src="foto.jpg.jpeg" class="foto-profil">
+
+</div>
+
+<!-- SERVICES -->
+
+<section id="services"class=fade">
+
+<h2>Layanan Saya</h2>
+
+<div class="services-container">
+
+<div class="card">
+<h3>Website Development</h3>
+<p>Membuat website menggunakan HTML, CSS dan JavaScript.</p>
+</div>
+
+<div class="card">
+<h3>Mobile Development</h3>
+<p>Membuat tampilan aplikasi mobile sederhana.</p>
+</div>
+
+<div class="card">
+<h3>UI Design</h3>
+<p>Mendesain tampilan website yang menarik.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="project" class="fade">
+
+<h2>Project Saya</h2>
+
+<div class="project-container">
+
+<div class="card">
+<a href="LINK-WEBSITE-1" target="_blank">
+<img src="project1.jpg.jpeg">
+</a>
+
+<h3>Website Profil</h3>
+
+<p>Saya membuat website profil menggunakan HTML.</p>
+<p><b>Tech:</b> HTML, CSS</p>
+<p><b>Fitur:</b> Responsive, Animasi</p>
+
+<a href="LINK-WEBSITE-1" target="_blank" class="btn">Lihat Website</a>
+</div>
+
+<div class="card">
+<a href="LINK-WEBSITE-2" target="_blank">
+<img src="project2.jpg.jpeg">
+</a>
+
+<h3>Website Portfolio</h3>
+
+<p>Saya membuat website portfolio interaktif.</p>
+
+<p><b>Tech:</b> HTML, CSS, JavaScript</p>
+<p><b>Fitur:</b> Animasi scroll, typing effect</p>
+
+<a href="LINK-WEBSITE-2" target="_blank" class="btn">Lihat Website</a>
+</div>
+
+<div class="card">
+<a href="https://paguyubanciduria.netlify.app/" target="_blank">
+<img src="project3.jpg.jpeg">
+</a>
+
+<h3>Website Paguyuban</h3>
+
+<p>Website organisasi pemuda Ciduria.</p>
+
+<p><b>Tech:</b> HTML, CSS</p>
+<p><b>Fitur:</b> Galeri foto & video</p>
+
+<a href="https://paguyubanciduria.netlify.app/" target="_blank" class="btn">
+Lihat Website
+</a>
+</div>
+
+<div class="card">  
+<a href="#" onclick="return false;">  
+<img src="projeck4.jpg.jpeg">  
+</a>  
+
+<h3>Landing Page Produk</h3>  
+
+<p>Landing page untuk promosi produk.</p>  
+
+<p><b>Tech:</b> HTML, CSS</p>  
+<p><b>Fitur:</b> Promosi produk, tombol CTA</p>  
+
+<a href="websit/" target="_blank"class="btn">lihat website
+</a>  
+</div>
+
+<div class="card">
+<a href="https://kalkulatorfais.netlify.app/" target="_blank">
+<img src="project5.jpg.jpeg">
+</a>
+
+<h3>Calculator Website</h3>
+
+<p>Kalkulator sederhana menggunakan HTML, CSS, dan JavaScript.</p>
+
+<p><b>Tech:</b> HTML, CSS, JavaScript</p>
+<p><b>Fitur:</b> Perhitungan real-time</p>
+
+<a href="https://kalkulatorfais.netlify.app/" target="_blank" class="btn">
+Lihat Website
+</a>
+</div>
+
+<div class="card">
+<a href="https://cheery-profiterole-1fb0ce.netlify.app/" target="_blank">
+<img src="project6.jpg.jpeg">
+</a>
+
+<h3>To Do List App</h3>
+
+<p>Aplikasi daftar tugas sederhana.</p>
+
+<p><b>Tech:</b> HTML, CSS, JavaScript</p>
+<p><b>Fitur:</b> Tambah & hapus tugas</p>
+
+<a href="https://cheery-profiterole-1fb0ce.netlify.app/" target="_blank" class="btn">
+Lihat Website
+</a>
+</div>
+
+<div class="card">
+<a href="https://badri21masroyah-maker.github.io/clock-faizs/" target="_blank">
+<img src="project7.jpg.jpeg">
+</a>
+
+<h3>Digital Clock</h3>
+
+<p>Jam digital real-time dengan animasi modern.</p>
+
+<p><b>Tech:</b> HTML, CSS, JavaScript</p>
+<p><b>Fitur:</b> Real-time clock</p>
+
+<a href="https://badri21masroyah-maker.github.io/clock-faizs/" target="_blank" class="btn">
+Lihat Website
+</a>
+</div>
+
+</div> <!-- PENUTUP project-container -->
+
+</section>
+
+<!-- 🔥 SECTION JASA -->
+<section id="jasa" class="fade">
+
+<h2>Jasa Pembuatan Website</h2>
+
+<p>Saya siap membantu membuat website modern, responsive, dan menarik untuk kebutuhan Anda 🚀</p>
+<p> Promo bulan ini! Harga bisa nego & free revisi 1 x </p>
+
+<div class="jasa-container">
+
+<div class="jasa-card">
+<h3>Website Portfolio</h3>
+<p class="harga">Rp100K</p>
+<p>✔ Design modern</p>
+<p>✔ Responsive</p>
+<p>✔ 1 halaman</p>
+<a href="https://wa.me/62895414029128" class="btn">Pesan</a>
+</div>
+
+<div class="jasa-card">
+<h3>Landing Page</h3>
+<p class="harga">Rp150K</p>
+<p>✔ Cocok untuk jualan</p>
+<p>✔ Design menarik</p>
+<p>✔ Tombol WhatsApp</p>
+<a href="https://wa.me/62895414029128" class="btn">Pesan</a>
+</div>
+
+<div class="jasa-card">
+<h3>Website UMKM</h3>
+<p class="harga">Rp200K</p>
+<p>✔ Multi halaman</p>
+<p>✔ Galeri produk</p>
+<p>✔ Kontak langsung</p>
+<a href="https://wa.me/6295414029128" class="btn">Pesan</a>
+</div>
+
+</div>
+
+</section>
+
+<section id="order" class="fade">
+
+<h2>Pesan Jasa</h2>
+
+<p>Isi form di bawah, nanti langsung terhubung ke WhatsApp saya 👇</p>
+
+<div class="order-box">
+
+<input type="text" id="nama" placeholder="Nama">
+<input type="text" id="layanan" placeholder="Pilih layanan (Portfolio / Landing Page / UMKM)">
+<textarea id="pesan" placeholder="Detail kebutuhan website"></textarea>
+
+<button onclick="kirimWA()" class="btn">Kirim Pesanan</button>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Kenapa Pilih Saya?</h2>
+
+<p>✔ Harga terjangkau</p>
+<p>✔ Bisa revisi</p>
+<p>✔ Fast respon</p>
+<p>✔ Sudah berpengalaman membuat beberapa website</p>
+
+</section>
+
+<section>
+
+<h2>Testimoni</h2>
+
+<p>"Webnya bagus dan cepat selesai!" ⭐⭐⭐⭐⭐</p>
+<p>"Recommended banget!" ⭐⭐⭐⭐⭐</p>
+
+</section>
+
+<!-- KONTAK -->
+
+<section id="kontak" class="fade">
+
+  <h2>Hubungi Saya</h2>
+
+  <p>
+    Tertarik bekerja sama atau punya project?  
+    Jangan ragu untuk menghubungi saya 👇
+  </p>
+
+  <div class="contact-box">
+
+    <a href="https://wa.me/62895414029128" target="_blank" class="card wa">
+      <span>📱</span>
+      <div>
+        <h3>WhatsApp</h3>
+        <p>Chat langsung</p>
+      </div>
+    </a>
+
+    <a href="mailto:faishisbullah7@gmail.com" class="card email">
+      <span>📩</span>
+      <div>
+        <h3>Email</h3>
+        <p>Kirim pesan</p>
+      </div>
+    </a>
+
+    <a href="https://instagram.com/fahisb12" target="_blank" class="card ig">
+      <span>📷</span>
+      <div>
+        <h3>Instagram</h3>
+        <p>@fahisb12</p>
+      </div>
+    </a>
+
+  </div>
+
+</section>
+</div>
+
+<script>
+
+/* Dark Mode */
+function darkMode(){
+  document.body.classList.toggle("dark");
+}
+
+/* Scroll Animation */
+const faders = document.querySelectorAll(".fade");
+const skills = document.querySelectorAll(".fill");
+
+window.addEventListener("scroll", function(){
+
+  const triggerBottom = window.innerHeight * 0.8;
+
+  /* Fade */
+  faders.forEach(function(el){
+    const boxTop = el.getBoundingClientRect().top;
+    if(boxTop < triggerBottom){
+      el.classList.add("show");
+    }
+  });
+
+  /* Skill Animation */
+  skills.forEach(function(skill){
+    const skillTop = skill.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if(skillTop < screenHeight){
+
+      if(skill.classList.contains("html")){
+        skill.style.width="90%";
+      }
+
+      if(skill.classList.contains("css")){
+        skill.style.width="80%";
+      }
+
+      if(skill.classList.contains("js")){
+        skill.style.width="60%";
+      }
+
+    }
+  });
+
+});
+
+/* Typing Animation */
+const text=[
+"Web Developer",
+"Mobile Developer",
+"Future Software Engineer"
+];
+
+let index=0;
+let charIndex=0;
+
+function type(){
+  if(charIndex<text[index].length){
+    document.getElementById("typing").textContent+=text[index].charAt(charIndex);
+    charIndex++;
+    setTimeout(type,100);
+  }else{
+    setTimeout(erase,2000);
+  }
+}
+
+function erase(){
+  if(charIndex>0){
+    document.getElementById("typing").textContent=text[index].substring(0,charIndex-1);
+    charIndex--;
+    setTimeout(erase,50);
+  }else{
+    index++;
+    if(index>=text.length){
+      index=0;
+    }
+    setTimeout(type,500);
+  }
+}
+
+type();
+
+</script>
+
+<footer style="text-align:center; padding:30px; margin-top:40px;">
+
+<p>© 2026 Fais Portfolio</p>
+
+<p>
+<a href="https://instagram.com/fahisb12" target="_blank">
+Instagram Saya
+</a>
+</p>
+<div class="contact-box">
+
+<a href="https://wa.me/62895414029128" class="wa-float" target="_blank">
+  💬
+</a>
+
+<script>
+function kirimWA(){
+
+let nama = document.getElementById("nama").value;
+let layanan = document.getElementById("layanan").value;
+let pesan = document.getElementById("pesan").value;
+
+// Validasi biar gak kosong
+if(nama === "" || layanan === "" || pesan === ""){
+  alert("Harap isi semua data dulu ya!");
+  return;
+}
+
+// Format pesan biar rapi di WhatsApp
+let text = `Halo Fais 👋
+Saya *${nama}*
+
+Saya tertarik dengan:
+➡️ *${layanan}*
+
+Detail kebutuhan:
+${pesan}
+
+Terima kasih 🙏`;
+
+// Encode biar aman
+let url = `https://wa.me/62895414029128?text=${encodeURIComponent(text)}`;
+
+// Buka WhatsApp
+window.open(url, '_blank');
+
+}
+</script>
+</footer>
+</body>
+</html>
